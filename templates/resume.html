@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block content %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: left;
+            position: relative;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            color: white;
+            background-color: #4a90e2; /* Button color */
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #357ab8; /* Darker shade on hover */
+        }
+        
+        /* Header */
+        h1 {
+            color: #4a90e2;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        p.subtitle {
+            color: black;
+            font-size: 1.4em;
+            margin-top: -10px;
+            font-weight: 300;
+        }
+        .logo {
+            width: 150px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            position: absolute; /* Position the logo absolutely */
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the left */
+        }
+
+        /* Section Headings */
+        h2 {
+            color: #4a90e2;
+            font-size: 1.8em;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: left;
+        }
+        
+        /* Information Group */
+        .info-group {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        .info-group p, .info-group li {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+        .info-group p strong {
+            color: #555;
+            font-weight: 700;
+        }
+
+        /* Lists */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f1f1f5;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        li:hover {
+            background-color: #e0e7ff;
+        }
+
+        /* Contact and Social Media */
+        a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        a:hover {
+            color: #333;
+        }
+        
+        /* About Section */
+        .about-me {
+            background-color: #f9fafc;
+            padding: 20px;
+            border-left: 4px solid #4a90e2;
+            border-radius: 5px;
+            font-size: 1.1em;
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <img src="{% static 'images/Photo.jpg' %}" alt="Logo" class="logo">
+        <h1>K.PHANI TEJA</h1>
+        <p class="subtitle">Here you'll find information about my work,projects, and interests.</p>
+        
+        <div class="info-group">
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Father's Name:</strong> {{ father_name }}</p>
+            <p><strong>Mother's Name:</strong> {{ mother_name }}</p>
+            <p><strong>School:</strong> {{ school }}</p>
+            <p><strong>University:</strong> {{ university }}</p>
+            <p><strong>Address:</strong> {{ address }}</p>
+            <p><strong>Blood Group:</strong> {{ blood_group }}</p>
+        </div>
+
+        <h2>Achievements</h2>
+        <ul>
+            {% for achievement in achievements %}
+                <li>{{ achievement }}</li>
+            {% endfor %}
+        </ul>
+
+
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Interests</h2>
+        <ul>
+            {% for interest in interests %}
+                <li>{{ interest }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Projects</h2>
+        <ul>
+            {% for project in projects %}
+                <li>{{ project }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Social Media</h2>
+        <p><strong>GitHub:</strong> <a href="{{ social_media.github }}" target="_blank">{{ social_media.github }}</a></p>
+
+        <h2>Contact Information</h2>
+        <p><strong>Email:</strong> <a href="mailto:{{ contact_info.email }}">{{ contact_info.email }}</a></p>
+        <p><strong>Phone:</strong> {{ contact_info.phone }}</p>
+
+        <h2>About Me</h2>
+        <div class="about-me">
+            <p>{{ about_me }}</p>
+        </div>
+        <p><a href="{% url 'home' %}" class="button"> RETURN TO HOME PAGE</a></p>
+    </div>
+    
+</body>
+</html>
+{% endblock %}
