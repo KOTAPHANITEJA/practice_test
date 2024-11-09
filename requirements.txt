@@ -30,7 +30,6 @@ pure-eval==0.2.2
 Pygments==2.17.2
 pyparsing==3.2.0
 python-dateutil==2.8.2
-pytz==1.21.4
 pywin32==306
 pyzmq==25.1.2
 scipy==1.14.1
